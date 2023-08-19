@@ -1,0 +1,178 @@
+.about__project {
+  margin: 110px 70px;
+  align-items: center;
+}
+
+.about__header {
+  max-width: 1140px;
+  color: #fff;
+  font-family: "Inter", Arial, sans-serif;
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.88px;
+  border-bottom: 1px solid #dadada;
+  padding-bottom: 23px;
+  margin: 0;
+  margin-bottom: 70px;
+}
+
+.about__diploma {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 110px;
+}
+
+.about__container {
+}
+
+.about__title {
+  color: #fff;
+  font-family: "Inter", Arial, sans-serif;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.8px;
+  padding: 0px;
+  margin: 0px 0px 26px 0px;
+}
+
+.about__subtitle {
+  color: #fff;
+  font-family: "Inter", Arial, sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+  padding: 0px;
+  margin: 0px;
+}
+
+.about__times {
+  display: grid;
+  grid-template-columns: 228px 912px;
+  grid-template-rows: 36px 17px;
+}
+
+.about__times-container {
+}
+
+.about__week {
+  color: #000;
+  text-align: center;
+  font-family: "Inter", Arial, sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin-bottom: 14px;
+  background-color: #3ddc84;
+  padding: 9px 14px;
+}
+
+.about__stack {
+  color: #8b8b8b;
+  text-align: center;
+  font-family: "Inter", Arial, sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 17px;
+}
+
+.about__weeks {
+  color: #fff;
+  text-align: center;
+  font-family: "Inter", Arial, sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin-bottom: 14px;
+  background-color: #303030;
+  padding: 9px 356px;
+}
+
+@media screen and (max-width: 1220px) {
+  .about__project {
+    margin: 90px 50px;
+  }
+
+  .about__diploma {
+    gap: 22px;
+    margin-bottom: 93px;
+  }
+
+  .about__times {
+    display: grid;
+    grid-template-columns: 140px 528px;
+    grid-template-rows: 36px 17px;
+  }
+
+  .about__week {
+    padding: 9px 10px;
+  }
+
+  .about__weeks {
+    padding: 9px 206px;
+  }
+
+  .about__stack {
+    font-family: "Suisse Intl", Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+  }
+}
+
+@media screen and (max-width: 730px) {
+  .about__project {
+    margin: 60px 18px 70px;
+  }
+
+  .about__header {
+    padding-bottom: 28px;
+    margin-bottom: 60px;
+  }
+
+  .about__diploma {
+    display: flex;
+    flex-direction: column;
+    gap: 56px;
+    margin-bottom: 60px;
+  }
+
+  .about__times {
+    display: grid;
+    grid-template-columns: 100px 184px;
+    grid-template-rows: 35px 13px;
+  }
+
+  .about__title {
+    font-size: 18px;
+    letter-spacing: -0.72px;
+    margin: 0px 0px 16px 0px;
+  }
+
+  .about__subtitle {
+    font-size: 11px;
+    line-height: 16px;
+  }
+
+  .about__week {
+    margin-bottom: 10px;
+    padding: 11px 10px;
+  }
+
+  .about__weeks {
+    margin-bottom: 10px;
+    padding: 11px 52px;
+  }
+
+  .about__stack {
+    font-family: "Suisse Intl", Arial, sans-serif;
+    font-size: 11px;
+    font-weight: 400;
+  }
+}

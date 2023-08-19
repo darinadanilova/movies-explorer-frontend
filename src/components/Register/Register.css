@@ -1,0 +1,166 @@
+.register {
+}
+
+.register__containers {
+  display: flex;
+  flex-direction: column;
+}
+
+.register__container {
+  display: flex;
+  flex-direction: column;
+  margin: 70px auto 30px;
+  gap: 40px;
+}
+
+.register__logo {
+  width: 38px;
+  height: 38px;
+  flex-shrink: 0;
+}
+
+.register___title {
+  color: #fff;
+  font-family: "Inter", Arial, sans-serif;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+.register__form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 0px auto 0px;
+}
+
+.register__label {
+  color: #8b8b8b;
+  font-family: "Inter", Arial, sans-serif;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin-top: 10px;
+}
+
+.register__input {
+  width: 381px;
+  height: 46px;
+  flex-shrink: 0;
+  border-radius: 8px;
+  background: #2f2f2f;
+  border: none;
+  color: #fff;
+  font-family: "Inter", Arial, sans-serif;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  padding-left: 15px;
+}
+
+.register__input_email {
+}
+
+.register__input_password {
+}
+
+.register__error {
+  color: #ee3465;
+  font-family: "Inter", Arial, sans-serif;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.register__signup {
+  display: flex;
+  flex-direction: column;
+  margin: 69px auto 70px;
+  gap: 16px;
+}
+
+.register__button {
+  border-radius: 3px;
+  background: #4285f4;
+  border: none;
+  color: #fff;
+  text-align: center;
+  font-family: "Inter", Arial, sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  padding: 13px 126px 15px 124px;
+}
+
+.register__button:hover {
+  opacity: 0.8;
+}
+
+.register__box {
+  display: flex;
+  flex-direction: row;
+  gap: 6px;
+  align-items: center;
+  margin: 0px auto 0px;
+}
+
+.register__ask {
+  color: #8b8b8b;
+  text-align: center;
+  font-family: "Inter", Arial, sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.register__signin {
+  color: #4285f4;
+  text-align: center;
+  font-family: "Inter", Arial, sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  text-decoration: none;
+}
+
+.register__signin:hover {
+  opacity: 0.7;
+}
+
+@media screen and (max-width: 780px) {
+  .register__container {
+    margin-top: 232px;
+    margin-left: 186px;
+  }
+
+  .register__signup {
+    margin-bottom: 232px;
+  }
+}
+
+@media screen and (max-width: 590px) {
+  .register__container {
+    margin: 56px auto 70px;
+    gap: 50px;
+    align-items: center;
+  }
+
+  .register__signup {
+    margin: 157px auto 30px;
+  }
+
+  .register__input {
+    width: 260px;
+  }
+
+  .register__button {
+    padding: 15px 68px 15px 67px;
+  }
+}
