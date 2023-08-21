@@ -26,18 +26,22 @@ function Profile() {
               <label className="profile__name">Имя</label>
               <input
                 className="profile__input"
+                required
                 value={editName}
                 type="text"
                 onChange={handleChangeName}
+                placeholder="Имя"
               />
             </div>
             <div className="profile__info">
               <label className="profile__email">E-mail</label>
               <input
                 className="profile__input"
+                required
                 value={editEmail}
                 type="email"
                 onChange={handleChangeEmail}
+                placeholder="Email"
               />
             </div>
           </fieldset>

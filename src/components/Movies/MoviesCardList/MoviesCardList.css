@@ -1,11 +1,14 @@
 .movies-list__cards {
+}
+
+.movies-list__cards {
   display: grid;
   grid-template-columns: 364px 364px 364px;
   grid-template-rows: 281px 281px 281px;
   column-gap: 24px;
   row-gap: 37px;
   padding: 0px;
-  margin: 0px 70px 0px 70px;
+  margin: 0px 70px 0px;
   align-items: center;
 }
 
@@ -40,6 +43,7 @@
     column-gap: 30px;
     row-gap: 30px;
     margin: 0px 30px;
+    align-items: center;
   }
 
   .movies-list__button {

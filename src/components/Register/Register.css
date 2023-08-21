@@ -1,16 +1,21 @@
 .register {
+  margin: 70px auto;
 }
 
 .register__containers {
   display: flex;
   flex-direction: column;
+  width: 100%;
 }
 
 .register__container {
+  max-width: 396px;
+  width: 100%;
   display: flex;
   flex-direction: column;
-  margin: 70px auto 30px;
+  margin: 0px auto 0px;
   gap: 40px;
+  margin: 0px auto 40px;
 }
 
 .register__logo {
@@ -19,13 +24,16 @@
   flex-shrink: 0;
 }
 
-.register___title {
+.register__title {
+  width: 396px;
   color: #fff;
   font-family: "Inter", Arial, sans-serif;
   font-size: 24px;
   font-style: normal;
   font-weight: 500;
   line-height: normal;
+  margin: 0px;
+  padding: 0px;
 }
 
 .register__form {
@@ -79,11 +87,12 @@
 .register__signup {
   display: flex;
   flex-direction: column;
-  margin: 69px auto 70px;
+  margin: 69px auto 0px;
   gap: 16px;
 }
 
 .register__button {
+  max-width: 396px;
   border-radius: 3px;
   background: #4285f4;
   border: none;
@@ -94,7 +103,7 @@
   font-style: normal;
   font-weight: 500;
   line-height: normal;
-  padding: 13px 126px 15px 124px;
+  padding: 13px 124px;
 }
 
 .register__button:hover {
@@ -135,32 +144,38 @@
 }
 
 @media screen and (max-width: 780px) {
-  .register__container {
-    margin-top: 232px;
-    margin-left: 186px;
-  }
-
-  .register__signup {
-    margin-bottom: 232px;
+  .register {
+    margin: 232px auto;
   }
 }
 
 @media screen and (max-width: 590px) {
+  .register {
+    margin: 56px auto 30px;
+  }
+
   .register__container {
-    margin: 56px auto 70px;
     gap: 50px;
+    margin-bottom: 80px;
+    max-width: 260px;
     align-items: center;
   }
 
+  .register__title {
+    max-width: 240px;
+    align-self: center;
+  }
+
   .register__signup {
-    margin: 157px auto 30px;
+    margin: 157px auto 0px;
   }
 
   .register__input {
-    width: 260px;
+    max-width: 245px;
   }
 
   .register__button {
-    padding: 15px 68px 15px 67px;
+    max-width: 260px;
+    padding: 15px 67px;
   }
 }

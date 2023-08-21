@@ -1,28 +1,28 @@
-.main__header {
+.main {
   display: flex;
   flex-direction: row;
   align-items: center;
   background: #202020;
+  padding: 18px 70px 18px;
+  justify-content: space-between;
 }
 
 .main__logo {
   width: 38px;
   height: 38px;
-  margin: 18px 44px 18px 70px;
 }
 
 .main__movies-containers {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  gap: 746px;
+  gap: 44px;
 }
 
 .main__movies-container {
   display: flex;
   flex-direction: row;
   gap: 16px;
-  margin-left: 44px;
   align-items: center;
 }
 
@@ -70,6 +70,17 @@
   justify-content: center;
   gap: 7px;
   text-decoration: none;
+  color: #fff;
+  align-self: center;
+  font-family: "Inter", Arial, sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 16px;
+  background: #202020;
+  border: none;
+  text-decoration: none;
+  border-bottom: none;
 }
 
 .main__profile {
@@ -101,7 +112,7 @@
   opacity: 0.7;
 }
 
-.burger {
+.burger__button {
   display: none;
 }
 
@@ -109,19 +120,11 @@
   display: none;
 }
 
-.burger__header {
+.burger {
   display: none;
 }
 
 @media screen and (max-width: 1220px) {
-  .main__logo {
-    margin: 18px 22px 18px 30px;
-  }
-
-  .main__movies-containers {
-    gap: 300px;
-  }
-
   .main__movies:active {
     border-bottom: 2px solid #fff;
     padding-bottom: 8px;
@@ -133,41 +136,12 @@
   }
 }
 
-@media screen and (max-width: 770px) {
-  .main__logo {
-    margin: 16px 5px 16px 5px;
-  }
-
-  .main__movies-containers {
-    gap: 0px;
-  }
-
-  .main__movies-container {
-    margin-left: 0px;
-  }
-
-  .main__container {
-    gap: 14px;
-    margin-right: 14px;
-  }
-
-  .main__signup {
-    font-size: 10px;
-  }
-
-  .main__signin {
-    font-size: 10px;
-    padding: 5px 12px;
-    margin: 24px 0px 24px 0px;
-  }
-}
-
 @media screen and (max-width: 769px) {
-  .main__header {
+  .main {
     display: none;
   }
 
-  .burger__header {
+  .burger {
     display: block;
     display: flex;
     justify-content: center;
@@ -185,7 +159,7 @@
     padding-bottom: 18px;
   }
 
-  .burger {
+  .burger__button {
     display: block;
     max-width: 768px;
     min-height: 74px;
@@ -200,11 +174,7 @@
     background-size: 44px 44px;
     border: 0;
     cursor: pointer;
-    background-repeat: no-repeat;
     background-color: inherit;
-    width: 100%;
-    object-fit: cover;
-    object-position: center;
   }
 
   .popup {
@@ -224,8 +194,9 @@
     flex-direction: column;
     align-self: flex-end;
     width: 520px;
-    height: 1024px;
     background-color: #202020;
+    padding: 0px 90px 90px;
+    align-items: center;
   }
 
   .popup__close {
@@ -233,7 +204,7 @@
     display: grid;
     place-content: center;
     margin: 22.44px 22.44px 0px 0px;
-    padding: 0;
+    padding: 0px;
     width: 22px;
     height: 22px;
     border: 0;
@@ -260,7 +231,7 @@
     flex-direction: column;
     align-items: center;
     margin: 0px;
-    padding: 105px 90px 0px;
+    padding: 105px 0px 0px;
     list-style: none;
     gap: 28px;
   }
@@ -323,10 +294,11 @@
   .popup__avatar-container {
     display: flex;
     flex-direction: row;
-    padding: 621px 210px 90px;
+    padding: 621px 0px 0px;
     gap: 7px;
     align-items: center;
     text-decoration: none;
+    margin: 0px;
   }
 
   .popup__avatar {
@@ -362,17 +334,23 @@
 }
 
 @media screen and (max-width: 750px) {
-  .main__header {
+  .burger {
+    gap: 450px;
+  }
+}
+
+@media screen and (max-width: 580px) {
+  .main {
     display: none;
   }
 
-  .burger__header {
+  .burger {
     padding-left: 14px;
     padding-right: 14px;
-    gap: 214px;
+    gap: 300px;
   }
 
-  .burger {
+  .burger__button {
     display: block;
     max-width: 320px;
     min-height: 74px;
@@ -393,12 +371,10 @@
     object-fit: cover;
     object-position: center;
   }
-}
 
-@media screen and (max-width: 580px) {
   .popup__containers {
     width: 320px;
-    height: 780px;
+    padding: 0px 10px 46px;
   }
 
   .popup__close {
@@ -406,7 +382,7 @@
     display: grid;
     place-content: center;
     margin: 13.44px 13.44px 0px 0px;
-    padding: 0;
+    padding: 0px;
     width: 22px;
     height: 22px;
     border: 0;
@@ -415,7 +391,7 @@
   }
 
   .popup__container {
-    padding: 99.44px 10px 0px;
+    padding: 99.44px 0px 0px;
     gap: 24px;
   }
 
@@ -424,6 +400,12 @@
   }
 
   .popup__avatar-container {
-    padding: 444px 110px 46px;
+    padding: 400px 0px 0px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .burger {
+    gap: 214px;
   }
 }

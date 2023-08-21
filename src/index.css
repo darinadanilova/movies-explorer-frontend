@@ -4,8 +4,8 @@
 body {
   background: #202020;
   color: white;
-  margin: 0 auto;
-  padding: 0;
+  margin: 0px auto;
+  padding: 0px;
   max-width: 1280px;
   height: 100%;
   font-family: "Inter", Arial, sans-serif;
@@ -16,4 +16,5 @@ body {
   -ms-text-size-adjust: 100%;
   -moz-text-size-adjust: 100%;
   text-rendering: optimizeLegibility;
+  border: red 3px solid;
 }

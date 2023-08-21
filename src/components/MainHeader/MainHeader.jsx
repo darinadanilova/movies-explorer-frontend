@@ -23,9 +23,11 @@ function MainHeader() {
   return (
     <>
       {isDesctop && (
-        <header className="main__header">
-            <img className="main__logo" src={headerLogo} alt="Лого кружок" />
+        <div className="main">
           <div className="main__movies-containers">
+            <Link to="/">
+              <img className="main__logo" src={headerLogo} alt="Лого кружок" />
+            </Link>
             <div className="main__movies-container">
               <Link to="/movies" className="main__movies">
                 Фильмы
@@ -34,12 +36,12 @@ function MainHeader() {
                 Сохранённые фильмы
               </Link>
             </div>
-            <Link to="/profile" className="main__avatar">
-              <button className="main__profile">Аккаунт</button>
-              <img className="main__img" src={headerAvatar} alt="Аватар" />
-            </Link>
           </div>
-        </header>
+          <Link to="/profile" className="main__avatar">
+            <h3 className="main__profile">Аккаунт</h3>
+            <img className="main__img" src={headerAvatar} alt="Аватар" />
+          </Link>
+        </div>
       )}
       {isOpen ? (
         <section className="popup">
@@ -51,17 +53,17 @@ function MainHeader() {
               onClick={handleClose}
             ></button>
             <ul className="popup__container">
-              <li className="popup__item list-item">
+              <li className="popup__item">
                 <Link to="/" className="popup__link popup__link-main">
                   Главная
                 </Link>
               </li>
-              <li className="popup__item list-item">
+              <li className="popup__item">
                 <Link to="/movies" className="popup__link popup__link-films">
                   Фильмы
                 </Link>
               </li>
-              <li className="popup__item list-item">
+              <li className="popup__item">
                 <Link
                   to="/saved-movies"
                   className="popup__link popup__link-saved"
@@ -70,7 +72,6 @@ function MainHeader() {
                 </Link>
               </li>
             </ul>
-
             <Link to="/profile" className="popup__avatar-container">
               <p className="popup__avatar">Аккаунт</p>
               <img className="popup__img" src={headerAvatar} alt="Аватар" />
@@ -78,10 +79,12 @@ function MainHeader() {
           </nav>
         </section>
       ) : (
-        <div className="burger__header">
+        <div className="burger">
+          <Link to="/">
             <img className="burger__logo" src={headerLogo} alt="Лого кружок" />
+          </Link>
           <button
-            className="burger"
+            className="burger__button"
             type="button"
             aria-label="burger"
             onClick={handleOpen}

@@ -18,7 +18,7 @@ function MoviesCard({ name, link, duration, isSavedFilms }) {
   }, [isSave]);
 
   return (
-    <section className="movies-card">
+    <li className="movies-card">
       <div className="movies-card__containers">
         <img src={link} alt={name} className="movies-card__image" />
         <div className="movies-card__container">
@@ -44,7 +44,7 @@ function MoviesCard({ name, link, duration, isSavedFilms }) {
           )}
         </div>
       </div>
-    </section>
+    </li>
   );
 }
 

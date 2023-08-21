@@ -23,11 +23,13 @@ function Login({ onSignInSubmit }) {
     <section className="login">
       <div className="login__containers">
         <div className="login__container">
-          <img className="login__logo" src={headerLogo} alt="Лого кружок" />
-          <h1 className="login___title">Рады видеть!</h1>
+          <Link to="/">
+            <img className="login__logo" src={headerLogo} alt="Лого кружок" />
+          </Link>
+          <h1 className="login__title">Рады видеть!</h1>
         </div>
 
-        <form className="login__form" onSubmit={handleLogin} noValidate>
+        <form className="login__form" onSubmit={handleLogin}>
           <label className="login__label">E-mail</label>
           <input
             required
@@ -39,6 +41,7 @@ function Login({ onSignInSubmit }) {
             name="email"
             minLength="2"
             maxLength="40"
+            placeholder="Email"
           />
           <label className="login__label">Пароль</label>
           <input
@@ -51,6 +54,7 @@ function Login({ onSignInSubmit }) {
             name="password"
             minLength="2"
             maxLength="200"
+            placeholder="Пароль"
           />
         </form>
         <div className="login__signin">

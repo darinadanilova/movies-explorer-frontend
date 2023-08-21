@@ -8,14 +8,18 @@ import { savedFilms } from "../../utils/constants";
 
 function SavedMovies() {
   return (
-    <>
+    <div className="saved-movies">
       <Header path="/saved-movies" isLoggedIn={false} />
       <main>
         <SearchForm />
-        <MoviesCardList savedFilms={savedFilms} isSavedFilms={true} />
+        <MoviesCardList
+          savedFilms={savedFilms}
+          isSavedFilms={true}
+          isMoreFilms={false}
+        />
       </main>
       <Footer />
-    </>
+    </div>
   );
 }
 

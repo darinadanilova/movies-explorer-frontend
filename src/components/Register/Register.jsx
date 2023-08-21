@@ -28,22 +28,29 @@ function Register({ onSignUpSubmit }) {
     <section className="register">
       <div className="register__containers">
         <div className="register__container">
-          <img className="register__logo" src={headerLogo} alt="Лого кружок" />
-          <h1 className="register___title">Добро пожаловать!</h1>
+          <Link to="/">
+            <img
+              className="register__logo"
+              src={headerLogo}
+              alt="Лого кружок"
+            />
+          </Link>
+          <h1 className="register__title">Добро пожаловать!</h1>
         </div>
 
-        <form className="register__form" onSubmit={handleRegister} noValidate>
+        <form className="register__form" onSubmit={handleRegister}>
           <label className="register__label">Имя</label>
           <input
             required
             onChange={handleChangeName}
             value={name}
-            type="email"
-            className="register__input register__input_email"
-            id="email"
-            name="email"
+            type="text"
+            className="register__input register__input_name"
+            id="name"
+            name="name"
             minLength="2"
             maxLength="40"
+            placeholder="Имя"
           />
           <label className="register__label">E-mail</label>
           <input
@@ -56,6 +63,7 @@ function Register({ onSignUpSubmit }) {
             name="email"
             minLength="2"
             maxLength="40"
+            placeholder="Email"
           />
           <label className="register__label">Пароль</label>
           <input
@@ -68,12 +76,12 @@ function Register({ onSignUpSubmit }) {
             name="password"
             minLength="2"
             maxLength="200"
+            placeholder="Пароль"
           />
           <span id="password-error" className="register__error">
             Что-то пошло не так...
           </span>
         </form>
-
         <div className="register__signup">
           <button
             className="register__button"

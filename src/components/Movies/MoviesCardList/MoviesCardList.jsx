@@ -3,11 +3,9 @@ import "./MoviesCardList.css";
 import MoviesCard from "../MoviesCard/MoviesCard";
 import { filmCards, savedFilms } from "../../../utils/constants";
 
-function MoviesCardList({ isSavedFilms }) {
+function MoviesCardList({ isSavedFilms, isMoreFilms }) {
   return (
-    <section
-      className={`movies-list ${isSavedFilms ? "movies-list_saved" : ""}`}
-    >
+    <div className={`movies-list ${isSavedFilms ? "movies-list_saved" : ""}`}>
       <ul className="movies-list__cards">
         {isSavedFilms
           ? savedFilms
@@ -33,8 +31,8 @@ function MoviesCardList({ isSavedFilms }) {
               />
             ))}
       </ul>
-      <button className="movies-list__button">Ещё</button>
-    </section>
+      {isMoreFilms && <button className="movies-list__button">Ещё</button>}
+    </div>
   );
 }
 

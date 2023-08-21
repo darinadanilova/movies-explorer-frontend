@@ -7,7 +7,7 @@ function Header({ path, isLoggedIn }) {
   const isBurger =
     path === "/movies" || path === "/saved-movies" || path === "/profile";
   return (
-    <header className={`header ${isBurger ? "header__hide" : ""}`}>
+    <header className={`header ${isBurger ? "header_hide" : ""}`}>
       {isLoggedIn ? <LandingHeader /> : <MainHeader />}
     </header>
   );
