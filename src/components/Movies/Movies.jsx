@@ -12,7 +12,7 @@ function Movies() {
       <Header path="/movies" isLoggedIn={false} />
       <main>
         <SearchForm />
-        <MoviesCardList filmCards={filmCards} />
+        <MoviesCardList filmCards={filmCards} isMoreFilms={true} />
       </main>
       <Footer />
     </>
