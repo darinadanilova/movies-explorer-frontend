@@ -44,7 +44,7 @@ function MainHeader() {
         </div>
       )}
       {isOpen ? (
-        <section className="popup">
+        <div className="popup">
           <nav className="popup__containers">
             <button
               className="popup__close"
@@ -77,7 +77,7 @@ function MainHeader() {
               <img className="popup__img" src={headerAvatar} alt="Аватар" />
             </Link>
           </nav>
-        </section>
+        </div>
       ) : (
         <div className="burger">
           <Link to="/">

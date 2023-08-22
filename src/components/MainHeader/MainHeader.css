@@ -194,8 +194,9 @@
     flex-direction: column;
     align-self: flex-end;
     width: 520px;
+    height: 100%;
     background-color: #202020;
-    padding: 0px 90px 90px;
+    padding: 0px 90px 0px;
     align-items: center;
   }
 
@@ -294,7 +295,7 @@
   .popup__avatar-container {
     display: flex;
     flex-direction: row;
-    padding: 621px 0px 0px;
+    padding: 621px 0px 90px;
     gap: 7px;
     align-items: center;
     text-decoration: none;
@@ -374,7 +375,9 @@
 
   .popup__containers {
     width: 320px;
-    padding: 0px 10px 46px;
+    height: 100%;
+    padding-left: 10px;
+    padding-right: 10px;
   }
 
   .popup__close {
@@ -400,7 +403,7 @@
   }
 
   .popup__avatar-container {
-    padding: 400px 0px 0px;
+    padding: 400px 0px 46px;
   }
 }
 

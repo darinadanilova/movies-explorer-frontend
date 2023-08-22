@@ -5,7 +5,7 @@ import headerLogo from "../../images/logo.svg";
 
 function LandingHeader() {
   return (
-    <section className="landing">
+    <div className="landing">
       <Link to="/">
         <img className="landing__logo" src={headerLogo} alt="Лого кружок" />
       </Link>
@@ -17,7 +17,7 @@ function LandingHeader() {
           Войти
         </Link>
       </div>
-    </section>
+    </div>
   );
 }
 

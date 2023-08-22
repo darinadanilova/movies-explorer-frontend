@@ -22,8 +22,8 @@
   grid-row: 1 / -1;
   align-self: center;
   max-width: 730px;
-  margin: 0px;
-  padding: 0px auto;
+  margin: 0px auto;
+  padding: 0px;
   text-align: center;
 }
 
@@ -41,7 +41,7 @@
   max-width: 1280px;
   width: 100%;
   min-height: 66px;
-  flex-shrink: 0px;
+  flex-shrink: 0;
   display: flex;
   margin: 0px auto;
   column-gap: 40px;
@@ -99,7 +99,7 @@
     font-size: 31px;
     line-height: 39px;
     letter-spacing: -1.24px;
-    padding: 0px auto;
+    padding: 0px;
     max-width: 300px;
   }
 
