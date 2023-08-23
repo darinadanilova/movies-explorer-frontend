@@ -1,0 +1,414 @@
+.main {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background: #202020;
+  padding: 18px 70px 18px;
+  justify-content: space-between;
+}
+
+.main__logo {
+  width: 38px;
+  height: 38px;
+}
+
+.main__movies-containers {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 44px;
+}
+
+.main__movies-container {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  align-items: center;
+}
+
+.main__movies {
+  color: #fff;
+  text-align: right;
+  font-family: "Inter", Arial, sans-serif;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 18px;
+  text-decoration: none;
+}
+
+.main__movies:active {
+  font-weight: 500;
+}
+
+.main__movies:hover {
+  opacity: 0.7;
+}
+
+.main__saved-movies {
+  color: #fff;
+  text-align: right;
+  font-family: "Inter", Arial, sans-serif;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 18px;
+  text-decoration: none;
+}
+
+.main__saved-movies:active {
+  font-weight: 500;
+}
+
+.main__saved-movies:hover {
+  opacity: 0.7;
+}
+
+.main__avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  text-decoration: none;
+  color: #fff;
+  align-self: center;
+  font-family: "Inter", Arial, sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 16px;
+  background: #202020;
+  border: none;
+  text-decoration: none;
+  border-bottom: none;
+}
+
+.main__profile {
+  color: #fff;
+  align-self: center;
+  font-family: "Inter", Arial, sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 16px;
+  background: #202020;
+  border: none;
+  text-decoration: none;
+  border-bottom: none;
+}
+
+.main__profile:hover {
+  opacity: 0.7;
+}
+
+.main__img {
+  padding: 8px;
+  border-radius: 50px;
+  background: #313131;
+  align-self: center;
+}
+
+.main__img:hover {
+  opacity: 0.7;
+}
+
+.burger__button {
+  display: none;
+}
+
+.popup__containers {
+  display: none;
+}
+
+.burger {
+  display: none;
+}
+
+@media screen and (max-width: 1220px) {
+  .main__movies:active {
+    border-bottom: 2px solid #fff;
+    padding-bottom: 8px;
+  }
+
+  .main__saved-movies:active {
+    border-bottom: 2px solid #fff;
+    padding-bottom: 8px;
+  }
+}
+
+@media screen and (max-width: 769px) {
+  .main {
+    display: none;
+  }
+
+  .burger {
+    display: block;
+    display: flex;
+    justify-content: center;
+    padding-left: 30px;
+    padding-right: 30px;
+    gap: 626px;
+  }
+
+  .burger__logo {
+    display: block;
+    max-width: 38px;
+    min-height: 38px;
+    flex-shrink: 0;
+    padding-top: 18px;
+    padding-bottom: 18px;
+  }
+
+  .burger__button {
+    display: block;
+    max-width: 768px;
+    min-height: 74px;
+    margin: 0px;
+    padding: 15px 0px;
+    background-image: url("../../images/burger.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+    background-size: 44px 44px;
+    border: 0;
+    cursor: pointer;
+    background-color: inherit;
+  }
+
+  .popup {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(20, 20, 20, 0.3);
+    z-index: 1;
+  }
+
+  .popup__containers {
+    display: flex;
+    flex-direction: column;
+    align-self: flex-end;
+    width: 520px;
+    height: 100%;
+    background-color: #202020;
+    padding: 0px 90px 0px;
+    align-items: center;
+  }
+
+  .popup__close {
+    align-self: flex-end;
+    display: grid;
+    place-content: center;
+    margin: 22.44px 22.44px 0px 0px;
+    padding: 0px;
+    width: 22px;
+    height: 22px;
+    border: 0;
+    background-color: inherit;
+    cursor: pointer;
+  }
+
+  .popup__close:hover {
+    opacity: 0.8;
+  }
+
+  .popup__close::after {
+    content: "";
+    width: 22px;
+    height: 22px;
+    background-image: url("../../images/close.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+  }
+
+  .popup__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0px;
+    padding: 105px 0px 0px;
+    list-style: none;
+    gap: 28px;
+  }
+
+  .popup__link-main {
+    margin: 0px;
+    padding: 0px;
+    color: #fff;
+    text-align: center;
+    font-feature-settings: "clig" off, "liga" off;
+    font-family: "Inter", Arial, sans-serif;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    text-decoration: none;
+  }
+
+  .popup__link-main:hover {
+    opacity: 0.7;
+  }
+
+  .popup__link-films {
+    margin: 0px;
+    padding-bottom: 4px;
+    color: #fff;
+    text-align: center;
+    font-feature-settings: "clig" off, "liga" off;
+    font-family: "Inter", Arial, sans-serif;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    border-bottom: 2px solid #fff;
+    text-decoration: none;
+  }
+
+  .popup__link-films:hover {
+    opacity: 0.7;
+  }
+
+  .popup__link-saved {
+    margin: 0px;
+    padding: 0px;
+    color: #fff;
+    text-align: center;
+    font-feature-settings: "clig" off, "liga" off;
+    font-family: "Inter", Arial, sans-serif;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    text-decoration: none;
+  }
+
+  .popup__link-saved:hover {
+    opacity: 0.7;
+  }
+
+  .popup__avatar-container {
+    display: flex;
+    flex-direction: row;
+    padding: 621px 0px 90px;
+    gap: 7px;
+    align-items: center;
+    text-decoration: none;
+    margin: 0px;
+  }
+
+  .popup__avatar {
+    color: #fff;
+    font-feature-settings: "clig" off, "liga" off;
+    font-family: "Inter", Arial, sans-serif;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 12px;
+    text-decoration: none;
+    padding: 0px;
+    margin: 0px;
+  }
+
+  .popup__avatar:hover {
+    opacity: 0.7;
+  }
+
+  .popup__img {
+    max-width: 12px;
+    min-height: 12px;
+    padding: 7px;
+    border-radius: 50px;
+    background: #313131;
+    align-self: center;
+    margin: 0px;
+  }
+
+  .popup__img:hover {
+    opacity: 0.7;
+  }
+}
+
+@media screen and (max-width: 750px) {
+  .burger {
+    gap: 450px;
+  }
+}
+
+@media screen and (max-width: 580px) {
+  .main {
+    display: none;
+  }
+
+  .burger {
+    padding-left: 14px;
+    padding-right: 14px;
+    gap: 300px;
+  }
+
+  .burger__button {
+    display: block;
+    max-width: 320px;
+    min-height: 74px;
+    margin: 0px;
+    padding: 15px 0px;
+    background-image: url("../../images/burger.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+    background-size: 40px 43px;
+    border: 0;
+    cursor: pointer;
+    background-repeat: no-repeat;
+    background-color: inherit;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .popup__containers {
+    width: 320px;
+    height: 100%;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .popup__close {
+    align-self: flex-end;
+    display: grid;
+    place-content: center;
+    margin: 13.44px 13.44px 0px 0px;
+    padding: 0px;
+    width: 22px;
+    height: 22px;
+    border: 0;
+    background-color: inherit;
+    cursor: pointer;
+  }
+
+  .popup__container {
+    padding: 99.44px 0px 0px;
+    gap: 24px;
+  }
+
+  .popup__link-films {
+    padding-bottom: 7px;
+  }
+
+  .popup__avatar-container {
+    padding: 400px 0px 46px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .burger {
+    gap: 214px;
+  }
+}

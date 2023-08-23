@@ -1,0 +1,172 @@
+.profile__containers {
+  display: flex;
+  flex-direction: column;
+  padding: 74px 435px 70px;
+  gap: 123px;
+}
+
+.profile__title {
+  color: #fff;
+  text-align: center;
+  font-family: "Inter", Arial, sans-serif;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  margin: 0px;
+}
+
+.profile__form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.profile__fieldset {
+  max-width: 410px;
+  border: none;
+  padding: 0px;
+}
+
+.profile__info {
+  padding-bottom: 16px;
+  margin-bottom: 17px;
+  display: flex;
+  border-bottom: 1px solid #424242;
+  gap: 147px;
+}
+
+.profile__info:last-child {
+  padding: 0px;
+  margin: 0px;
+  border-bottom: none;
+}
+
+.profile__name {
+  max-width: 141px;
+  width: 100%;
+  height: 14px;
+  color: #fff;
+  font-family: "Inter", Arial, sans-serif;
+  font-size: 11px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  justify-self: flex-start;
+}
+
+.profile__input {
+  padding: 0px;
+  max-width: 122px;
+  border: none;
+  background: #202020;
+  color: #fff;
+  text-align: right;
+  font-family: "Inter", Arial, sans-serif;
+  font-size: 11px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.profile__email {
+  max-width: 141px;
+  width: 100%;
+  height: 14px;
+  color: #fff;
+  font-family: "Inter", Arial, sans-serif;
+  font-size: 11px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.profile__container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding-top: 220px;
+}
+
+.profile__edit {
+  color: #fff;
+  text-align: center;
+  font-family: "Inter", Arial, sans-serif;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  border: none;
+  background: #202020;
+}
+
+.profile__edit:hover {
+  opacity: 0.7;
+}
+
+.profile__logout {
+  color: #ee3465;
+  text-align: center;
+  font-family: "Inter", Arial, sans-serif;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  text-decoration: none;
+}
+
+.profile__logout:hover {
+  opacity: 0.7;
+}
+
+@media screen and (max-width: 1220px) {
+  .profile__containers {
+    padding: 236px 179px 269px;
+    gap: 96px;
+  }
+
+  .profile__container {
+    padding-top: 210px;
+  }
+}
+
+@media screen and (max-width: 730px) {
+  .profile__containers {
+    padding: 70px 30px 40px;
+    gap: 80px;
+  }
+
+  .profile__container {
+    padding-top: 379px;
+  }
+
+  .profile__fieldset {
+    max-width: 260px;
+    margin: 0px;
+  }
+
+  .profile__info {
+    gap: 10px;
+  }
+
+  .profile__name {
+    max-width: 130px;
+  }
+
+  .profile__input {
+    max-width: 120px;
+    margin: 0px;
+  }
+
+  .profile__email {
+    max-width: 130px;
+  }
+
+  .profile__edit {
+    font-size: 12px;
+  }
+
+  .profile__logout {
+    font-size: 12px;
+  }
+}

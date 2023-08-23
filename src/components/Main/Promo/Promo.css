@@ -1,0 +1,114 @@
+.promo {
+}
+
+.promo__containers {
+  display: grid;
+  justify-content: center;
+  box-sizing: border-box;
+  height: 524px;
+  background-color: #073042;
+}
+
+.promo__title {
+  color: #fff;
+  text-align: center;
+  font-family: "Inter", Arial, sans-serif;
+  font-size: 50px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 58px;
+  letter-spacing: -2px;
+  grid-column: 1 / -1;
+  grid-row: 1 / -1;
+  align-self: center;
+  max-width: 730px;
+  margin: 0px auto;
+  padding: 0px;
+  text-align: center;
+}
+
+.promo__img {
+  grid-column: 1 / -1;
+  grid-row: 1 / -1;
+  margin: 0px auto;
+  padding: 0px;
+  max-width: 320px;
+  max-height: 320px;
+  align-self: center;
+}
+
+.promo__container {
+  max-width: 1280px;
+  width: 100%;
+  min-height: 66px;
+  flex-shrink: 0;
+  display: flex;
+  margin: 0px auto;
+  column-gap: 40px;
+  padding: 0px;
+  justify-content: center;
+  background: #272727;
+  align-items: center;
+}
+
+.promo__link {
+  display: block;
+  max-width: 96px;
+  list-style: none;
+  text-align: center;
+  margin: 0px;
+  font-family: "Inter", Arial, sans-serif;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 16px;
+}
+
+.promo__link:hover {
+  opacity: 0.7;
+}
+
+.promo__project {
+  color: #fff;
+}
+
+.promo__techs {
+  color: #fff;
+}
+
+.promo__student {
+  color: #fff;
+}
+
+@media screen and (max-width: 790px) {
+  .promo__containers {
+    height: 784px;
+  }
+
+  .promo__title {
+    max-width: 500px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .promo__containers {
+    height: 570px;
+  }
+
+  .promo__title {
+    font-size: 31px;
+    line-height: 39px;
+    letter-spacing: -1.24px;
+    padding: 0px;
+    max-width: 300px;
+  }
+
+  .promo__img {
+    max-width: 248px;
+    max-height: 248px;
+  }
+
+  .promo__link {
+    font-size: 11px;
+  }
+}
