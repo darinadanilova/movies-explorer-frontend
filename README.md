@@ -2,6 +2,8 @@
 
 Адрес репозитория: https://github.com/darinadanilova/movies-explorer-frontend
 
+Ссылка на пул реквест: 
+
 ## Ссылки на проект
 
 IP-адрес 158.160.46.239
