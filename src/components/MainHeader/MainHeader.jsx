@@ -5,19 +5,15 @@ import headerLogo from "../../images/logo.svg";
 import headerAvatar from "../../images/avatar.svg";
 import SizeScreen from "../SizeScreen/SizeScreen";
 
-function MainHeader({ path }) {
-  const isHomePage = path === "/";
-  const isMovies = path === "/movies";
-  const isSavedMovies = path === "/saved-movies";
-  const isProfile = path === "/profile";
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+function MainHeader() {
+  const [isOpen, setIsOpen] = useState(false);
 
-  const handleMenuOpen = () => {
-    setIsMenuOpen(true);
+  const handleOpen = () => {
+    setIsOpen(true);
   };
 
-  const handleMenuClose = () => {
-    setIsMenuOpen(false);
+  const handleClose = () => {
+    setIsOpen(false);
   };
 
   const screenWidth = SizeScreen();
@@ -33,43 +29,28 @@ function MainHeader({ path }) {
               <img className="main__logo" src={headerLogo} alt="Лого кружок" />
             </Link>
             <div className="main__movies-container">
-              <Link
-                to="/movies"
-                className={`main__link main__movies ${
-                  isMovies ? "main__link_active" : ""
-                } ${isHomePage ? "main__link_homepage" : ""}`}
-              >
+              <Link to="/movies" className="main__movies">
                 Фильмы
               </Link>
-              <Link
-                to="/saved-movies"
-                className={`main__link main__saved-movies ${
-                  isSavedMovies ? "main__link_active" : ""
-                } ${isHomePage ? "main__link_homepage" : ""}`}
-              >
+              <Link to="/saved-movies" className="main__saved-movies">
                 Сохранённые фильмы
               </Link>
             </div>
           </div>
-          <Link
-            to="/profile"
-            className={`main__link main__avatar ${
-              isProfile ? "main__link_active" : ""
-            } ${isHomePage ? "main__link_homepage" : ""}`}
-          >
+          <Link to="/profile" className="main__avatar">
             <h3 className="main__profile">Аккаунт</h3>
             <img className="main__img" src={headerAvatar} alt="Аватар" />
           </Link>
         </div>
       )}
-      {isMenuOpen ? (
+      {isOpen ? (
         <div className="popup">
           <nav className="popup__containers">
             <button
               className="popup__close"
               type="button"
               aria-label="close"
-              onClick={handleMenuClose}
+              onClick={handleClose}
             ></button>
             <ul className="popup__container">
               <li className="popup__item">
@@ -103,12 +84,10 @@ function MainHeader({ path }) {
             <img className="burger__logo" src={headerLogo} alt="Лого кружок" />
           </Link>
           <button
-            className={`burger__button ${
-              isHomePage ? "burger__button_homepage" : ""
-            }`}
+            className="burger__button"
             type="button"
             aria-label="burger"
-            onClick={handleMenuOpen}
+            onClick={handleOpen}
           ></button>
         </div>
       )}
