@@ -1,15 +1,14 @@
-import { React, useContext } from "react";
+import React from "react";
 import "./Header.css";
 import LandingHeader from "../LandingHeader/LandingHeader";
 import MainHeader from "../MainHeader/MainHeader";
-import { LoggedContext } from "../../contexts/LoggedContext";
 
-function Header({ path }) {
-  const isHomePage = path === "/";
-  const isLoggedIn = useContext(LoggedContext);
+function Header({ path, isLoggedIn }) {
+  const isBurger =
+    path === "/movies" || path === "/saved-movies" || path === "/profile";
   return (
-    <header className={`header ${isHomePage ? "header_hide" : ""}`}>
-      {isLoggedIn ? <MainHeader path={path} /> : <LandingHeader />}
+    <header className={`header ${isBurger ? "header_hide" : ""}`}>
+      {isLoggedIn ? <LandingHeader /> : <MainHeader />}
     </header>
   );
 }

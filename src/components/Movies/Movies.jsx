@@ -4,46 +4,15 @@ import Header from "../Header/Header";
 import SearchForm from "./SearchForm/SearchForm";
 import MoviesCardList from "./MoviesCardList/MoviesCardList";
 import Footer from "../Footer/Footer";
+import { filmCards } from "../../utils/constants";
 
-function Movies({
-  path,
-  onSearch,
-  onSearchByDuration,
-  searchText,
-  moviesFiltered,
-  savedMovies,
-  lang,
-  isShowCardList,
-  isShowNotFound,
-  isShowRequestErrorMessage,
-  isPreloader,
-  isSaved,
-  onSaveMovie,
-  onDeleteMovie,
-}) {
+function Movies() {
   return (
     <>
       <Header path="/movies" isLoggedIn={false} />
       <main>
-        <SearchForm
-          onSearch={onSearch}
-          searchText={searchText}
-          onSearchByDuration={onSearchByDuration}
-        />
-        <MoviesCardList
-          isMoreFilms={true}
-          path={path}
-          movies={moviesFiltered}
-          savedMovies={savedMovies}
-          lang={lang}
-          isShowCardList={isShowCardList}
-          isShowNotFound={isShowNotFound}
-          isShowRequestErrorMessage={isShowRequestErrorMessage}
-          isPreloader={isPreloader}
-          isSaved={isSaved}
-          onSaveMovie={onSaveMovie}
-          onDeleteMovie={onDeleteMovie}
-        />
+        <SearchForm />
+        <MoviesCardList filmCards={filmCards} isMoreFilms={true} />
       </main>
       <Footer />
     </>

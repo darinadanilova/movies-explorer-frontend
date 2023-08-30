@@ -134,41 +134,6 @@
   opacity: 0.7;
 }
 
-.login__button-active {
-  color: #fff;
-  background-color: #3456f3;
-  transition: opacity 0.24s ease;
-  cursor: pointer;
-}
-
-.login__button-active:hover {
-  opacity: 0.7;
-}
-
-.login__button-inactive {
-  color: #a0a0a0;
-  background-color: #f8f8f8;
-  cursor: inherit;
-}
-
-.login__button-inactive:hover {
-  opacity: 1;
-}
-
-.login__error {
-  display: block;
-  min-height: 14px;
-  margin: 10px 0px 0px;
-  padding: 0px;
-  text-align: start;
-  color: #ee3465;
-  font-family: "Inter", Arial, sans-serif;
-  font-size: 10px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
-}
-
 @media screen and (max-width: 780px) {
   .login {
     margin: 232px auto;

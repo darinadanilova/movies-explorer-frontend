@@ -2,6 +2,7 @@
   display: flex;
   flex-direction: row;
   align-items: center;
+  background: #202020;
   padding: 18px 70px 18px;
   justify-content: space-between;
 }
@@ -44,28 +45,6 @@
   opacity: 0.7;
 }
 
-.main__link {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0;
-  padding: 0;
-  text-decoration: none;
-  transition: opacity 0.15s ease;
-}
-
-.main__link:hover {
-  opacity: 0.7;
-}
-
-.main__link_homepage {
-  color: #fff;
-}
-
-.main__link_active {
-  font: 500 13px/18px "Inter", "Arial", sans-serif;
-}
-
 .main__saved-movies {
   color: #fff;
   text-align: right;
@@ -98,6 +77,7 @@
   font-style: normal;
   font-weight: 500;
   line-height: 16px;
+  background: #202020;
   border: none;
   text-decoration: none;
   border-bottom: none;
@@ -111,6 +91,7 @@
   font-style: normal;
   font-weight: 500;
   line-height: 16px;
+  background: #202020;
   border: none;
   text-decoration: none;
   border-bottom: none;
@@ -141,10 +122,6 @@
 
 .burger {
   display: none;
-}
-
-.burger__button_homepage {
-  background-image: linear-gradient(#073042 7px, #fff 3px);
 }
 
 @media screen and (max-width: 1220px) {
