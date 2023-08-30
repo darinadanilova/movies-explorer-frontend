@@ -1,8 +1,8 @@
 # movies-explorer-frontend
 
-Адрес репозитория: https://github.com/darinadanilova/movies-explorer-frontend
-
 Ссылка на пул реквест: https://github.com/darinadanilova/movies-explorer-frontend/pull/2
+
+Адрес репозитория: https://github.com/darinadanilova/movies-explorer-frontend
 
 ## Ссылки на проект
 
