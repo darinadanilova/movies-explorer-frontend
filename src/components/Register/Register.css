@@ -76,28 +76,12 @@
 }
 
 .register__error {
-  display: block;
-  min-height: 14px;
-  margin: 10px 0px 0px;
-  padding: 0px;
-  text-align: start;
   color: #ee3465;
   font-family: "Inter", Arial, sans-serif;
   font-size: 10px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
-}
-
-.register__errors {
-  align-self: center;
-  max-width: 396px;
-  min-height: 70px;
-  margin: 48px 0px 20px;
-  padding: 0 20px;
-  font: 500 14px/16px "Inter", "Arial", sans-serif;
-  color: #ee3465;
-  text-align: center;
 }
 
 .register__signup {
@@ -124,27 +108,6 @@
 
 .register__button:hover {
   opacity: 0.8;
-}
-
-.register__button_active {
-  color: #fff;
-  background-color: #3456f3;
-  transition: opacity 0.24s ease;
-  cursor: pointer;
-}
-
-.register__button_active:hover {
-  opacity: 0.7;
-}
-
-.register__button_inactive {
-  color: #a0a0a0;
-  background-color: #f8f8f8;
-  cursor: inherit;
-}
-
-.register__button_inactive:hover {
-  opacity: 1;
 }
 
 .register__box {
@@ -214,11 +177,5 @@
   .register__button {
     max-width: 260px;
     padding: 15px 67px;
-  }
-
-  .register__errors {
-    max-width: 260px;
-    margin: 88px 0px 20px;
-    font: 400 13px/16px "Inter", "Arial", sans-serif;
   }
 }

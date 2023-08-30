@@ -2,67 +2,22 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./Login.css";
 import headerLogo from "../../images/logo.svg";
-import { EmailReg, ErrorEmail, ErrorPassword } from "../../utils/constants";
 
-function Login({ onLogin }) {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [emailValid, setEmailValid] = useState(false);
-  const [passwordValid, setPasswordValid] = useState(false);
-  const [formValid, setFormValid] = useState(false);
-  const [formErrors, setFormErrors] = useState({ email: "", password: "" });
+function Login({ onSignInSubmit }) {
+  const [signInEmail, setSignInEmail] = useState("pochta@yandex.ru");
+  const [signInPassword, setSignInPassword] = useState("");
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    onLogin(email, password);
-  };
+  function handleChangeEmail(e) {
+    setSignInEmail(e.target.value);
+  }
+  function handleChangePassword(e) {
+    setSignInPassword(e.target.value);
+  }
 
-  const handleChange = (event) => {
-    const { name, value } = event.target;
-    setEmail(name === "email" ? value : email);
-    setPassword(name === "password" ? value : password);
-    validateField(name, value);
-  };
-
-  const validateField = (fieldName, value) => {
-    let emailValidState = emailValid;
-    let passwordValidState = passwordValid;
-    const fieldValidationErrors = formErrors;
-
-    switch (fieldName) {
-      case "email":
-        emailValidState = value.match(EmailReg);
-        if (emailValidState !== null) {
-          fieldValidationErrors.email =
-            emailValidState[0].length === value.length ? "" : ErrorEmail;
-        } else if (value === "") {
-          fieldValidationErrors.email = "";
-        } else {
-          fieldValidationErrors.email = ErrorEmail;
-        }
-        break;
-      case "password":
-        passwordValidState = value.length >= 6;
-        fieldValidationErrors.password = passwordValidState
-          ? ""
-          : ErrorPassword;
-        if (value === "") {
-          fieldValidationErrors.password = "";
-        }
-        break;
-      default:
-        break;
-    }
-
-    setEmailValid(emailValidState);
-    setPasswordValid(passwordValidState);
-    setFormErrors(fieldValidationErrors);
-    validateForm();
-  };
-
-  const validateForm = () => {
-    setFormValid(emailValid && passwordValid);
-  };
+  function handleLogin(evt) {
+    evt.preventDefault();
+    onSignInSubmit(signInEmail, signInPassword);
+  }
 
   return (
     <section className="login">
@@ -74,12 +29,12 @@ function Login({ onLogin }) {
           <h1 className="login__title">Рады видеть!</h1>
         </div>
 
-        <form className="login__form" onSubmit={handleSubmit}>
+        <form className="login__form" onSubmit={handleLogin}>
           <label className="login__label">E-mail</label>
           <input
             required
-            value={email}
-            onChange={handleChange}
+            onChange={handleChangeEmail}
+            value={signInEmail}
             type="email"
             className="login__input login__input_email"
             id="email"
@@ -88,12 +43,11 @@ function Login({ onLogin }) {
             maxLength="40"
             placeholder="Email"
           />
-          <span className="login__error">{formErrors.email}</span>
           <label className="login__label">Пароль</label>
           <input
             required
-            value={password}
-            onChange={handleChange}
+            onChange={handleChangePassword}
+            value={signInPassword}
             type="password"
             className="login__input login__input_password"
             id="password"
@@ -102,29 +56,24 @@ function Login({ onLogin }) {
             maxLength="200"
             placeholder="Пароль"
           />
-          <span className="login__error">{formErrors.password}</span>
-
-          <div className="login__signin">
-            <button
-              className={`login__button-signin ${
-                !formValid ? "login__button-inactive" : "login__button-active"
-              } login__button`}
-              disabled={!formValid}
-              aria-label="login-button"
-              type="submit"
-              name="login-button"
-              id="login-button"
-            >
-              Войти
-            </button>
-            <div className="login__box">
-              <p className="login__ask">Ещё не зарегистрированы?</p>
-              <Link to={"/signup"} className="login__signup">
-                Регистрация
-              </Link>
-            </div>
-          </div>
         </form>
+        <div className="login__signin">
+          <button
+            className="login__button"
+            aria-label="login-button"
+            type="submit"
+            name="login-button"
+            id="login-button"
+          >
+            Войти
+          </button>
+          <div className="login__box">
+            <p className="login__ask">Ещё не зарегистрированы?</p>
+            <Link to={"/signup"} className="login__signup">
+              Регистрация
+            </Link>
+          </div>
+        </div>
       </div>
     </section>
   );
