@@ -86,6 +86,12 @@ function App() {
   }, [isLoad]);
 
   useEffect(() => {
+    if (loggedIn && (window.location.pathname === "/signin" || window.location.pathname === "/signup")) {
+      navigate("/movies");
+    }
+  }, [loggedIn, navigate]);
+
+  useEffect(() => {
     localStorage.setItem("SavedMovies", JSON.stringify(savedMovies));
   }, [savedMovies]);
 
@@ -123,7 +129,6 @@ function App() {
             setCurrentUser(res.user);
             setLoggedIn(true);
             getSaveFilms();
-            navigate("/movies");
           })
           .catch((err) => {
             handleError(err);
@@ -365,7 +370,6 @@ function App() {
         break;
       case 401 || 403:
         openTooltip(ErrorAuth);
-        handleSignout();
         break;
       case 404:
         openTooltip(ErrorNotFound);
@@ -377,7 +381,6 @@ function App() {
         openTooltip(
           `${ErrorDefault} ${err.status !== undefined ? err.status : ""}`
         );
-        handleSignout();
         break;
     }
   };
@@ -463,7 +466,7 @@ function App() {
                 />
               }
             />
-            <Route path="/*" element={<NotFound />}></Route>
+            <Route path="*" element={<NotFound />}></Route>
           </Routes>
 
           <InfoTooltip

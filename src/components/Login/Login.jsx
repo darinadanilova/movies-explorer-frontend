@@ -11,10 +11,13 @@ function Login({ onLogin }) {
   const [passwordValid, setPasswordValid] = useState(false);
   const [formValid, setFormValid] = useState(false);
   const [formErrors, setFormErrors] = useState({ email: "", password: "" });
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    setIsLoading(true);
     onLogin(email, password);
+    setIsLoading(false);
   };
 
   const handleChange = (event) => {
@@ -87,6 +90,7 @@ function Login({ onLogin }) {
             minLength="2"
             maxLength="40"
             placeholder="Email"
+            disabled={isLoading}
           />
           <span className="login__error">{formErrors.email}</span>
           <label className="login__label">Пароль</label>
@@ -101,6 +105,7 @@ function Login({ onLogin }) {
             minLength="2"
             maxLength="200"
             placeholder="Пароль"
+            disabled={isLoading}
           />
           <span className="login__error">{formErrors.password}</span>
 
@@ -109,13 +114,13 @@ function Login({ onLogin }) {
               className={`login__button-signin ${
                 !formValid ? "login__button-inactive" : "login__button-active"
               } login__button`}
-              disabled={!formValid}
+              disabled={!formValid || isLoading}
               aria-label="login-button"
               type="submit"
               name="login-button"
               id="login-button"
             >
-              Войти
+              {isLoading ? "Вход..." : "Войти"}
             </button>
             <div className="login__box">
               <p className="login__ask">Ещё не зарегистрированы?</p>

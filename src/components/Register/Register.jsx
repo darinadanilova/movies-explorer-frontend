@@ -24,10 +24,13 @@ function Register({ onRegister, isShowErrorMessage }) {
     email: "",
     password: "",
   });
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    setIsLoading(true);
     onRegister(name, email, password);
+    setIsLoading(false);
   };
 
   const handleChange = (event) => {
@@ -122,6 +125,7 @@ function Register({ onRegister, isShowErrorMessage }) {
             minLength="2"
             maxLength="40"
             placeholder="Имя"
+            disabled={isLoading}
           />
           <span className="register__error">{formErrors.name}</span>
           <label className="register__label">E-mail</label>
@@ -136,6 +140,8 @@ function Register({ onRegister, isShowErrorMessage }) {
             minLength="2"
             maxLength="40"
             placeholder="Email"
+            disabled={isLoading}
+            autocomplete="on"
           />
           <span className="register__error">{formErrors.email}</span>
           <label className="register__label">Пароль</label>
@@ -150,6 +156,8 @@ function Register({ onRegister, isShowErrorMessage }) {
             minLength="2"
             maxLength="200"
             placeholder="Пароль"
+            disabled={isLoading}
+            autocomplete="on"
           />
           <span id="password-error" className="register__error">
             {formErrors.password}
@@ -165,13 +173,13 @@ function Register({ onRegister, isShowErrorMessage }) {
                   ? "register__button_inactive"
                   : "register__button_active"
               } register__button`}
-              disabled={!formValid}
+              disabled={!formValid || isLoading}
               aria-label="register-button"
               type="submit"
               name="register-button"
               id="register-button"
             >
-              Зарегистрироваться
+              {isLoading ? "Регистрация..." : "Зарегистрироваться"}
             </button>
             <div className="register__box">
               <p className="register__ask">Уже зарегистрированы?</p>

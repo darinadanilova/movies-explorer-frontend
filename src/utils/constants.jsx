@@ -6,6 +6,11 @@ const { URL_BEATFILM = "https://api.nomoreparties.co/beatfilm-movies" } =
   process.env;
 const { SECRET_KEY = "some-secret-key" } = process.env;
 const SHORT_FILMS = 40;
+const CARDS_LOADED_SMALL = 2;
+const CARDS_LOADED_BIG = 3;
+const CARDS_DISPLAYED_SMALL = 5;
+const CARDS_DISPLAYED_MIDDLE = 8;
+const CARDS_DISPLAYED_BIG = 12;
 const CyrillicReg = /^[\u0400-\u04FF]+$/;
 const NameReg = /([А-ЯЁа-яёa-z-\s]+)/gi;
 const EmailReg = /^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i;
@@ -25,7 +30,7 @@ const ErrorRegister =
   "Во время регистрации произошла ошибка. Возможно, проблема с соединением или пользователь с таким email уже существует";
 const ErrorRequest =
   "Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Попробуйте ещё раз позже.";
-const NotFoundMessage = "Запрашиваемый ресурс не найден!";
+const NotFoundMessage = "Ничего не найдено.";
 const NameError = "Не введено имя пользователя!";
 const EmailError = "Не введён адрес электронной почты!";
 
@@ -54,4 +59,9 @@ module.exports = {
   NameError,
   EmailError,
   URL_BEATFILM,
+  CARDS_LOADED_SMALL,
+  CARDS_LOADED_BIG,
+  CARDS_DISPLAYED_SMALL,
+  CARDS_DISPLAYED_MIDDLE,
+  CARDS_DISPLAYED_BIG
 };

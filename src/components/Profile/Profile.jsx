@@ -18,6 +18,7 @@ function Profile({ editCurrentUser, handleLogout }) {
   const [formValid, setFormValid] = useState(false);
   const [formErrors, setFormErrors] = useState({ name: "", email: "" });
   const [isEditing, setIsEditing] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const currentUser = useContext(CurrentUserContext);
 
   useEffect(() => {
@@ -29,7 +30,9 @@ function Profile({ editCurrentUser, handleLogout }) {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    setIsLoading(true);
     editCurrentUser(email, name);
+    setIsLoading(false);
     setIsEditing(false);
   };
 
@@ -116,7 +119,7 @@ function Profile({ editCurrentUser, handleLogout }) {
                 value={name}
                 onChange={handleChange}
                 placeholder="Имя"
-                disabled={!isEditing}
+                disabled={!isEditing || isLoading}
               />
             </div>
             <span className="profile__error">{formErrors.name}</span>
@@ -130,7 +133,7 @@ function Profile({ editCurrentUser, handleLogout }) {
                 value={email}
                 onChange={handleChange}
                 placeholder="Email"
-                disabled={!isEditing}
+                disabled={!isEditing || isLoading}
               />
             </div>
             <span className="profile__error">{formErrors.email}</span>
@@ -140,13 +143,13 @@ function Profile({ editCurrentUser, handleLogout }) {
               <button
                 type="submit"
                 className={`profile__button_edit ${
-                  !formValid
+                  !formValid || isLoading
                     ? "profile__button_inactive"
                     : "profile__button_active"
                 } profile__edit`}
-                disabled={!formValid}
+                disabled={!formValid || isLoading}
               >
-                Сохранить
+                {isLoading ? "Сохранение..." : "Сохранить"}
               </button>
             ) : (
               <button
@@ -159,7 +162,7 @@ function Profile({ editCurrentUser, handleLogout }) {
             )}
             {!isEditing && (
               <Link
-                to={"/signin"}
+                to={"/"}
                 className="profile__edit profile__logout"
                 onClick={signOut}
               >

@@ -5,6 +5,13 @@ import MoviesCard from "../MoviesCard/MoviesCard";
 import { NotFoundMessage, ErrorRequest } from "../../../utils/constants";
 import Preloader from "../Preloader/Preloader";
 import SizeScreen from "../../SizeScreen/SizeScreen";
+import {
+  CARDS_LOADED_SMALL,
+  CARDS_LOADED_BIG,
+  CARDS_DISPLAYED_SMALL,
+  CARDS_DISPLAYED_MIDDLE,
+  CARDS_DISPLAYED_BIG,
+} from "../../../utils/constants";
 
 function MoviesCardList({
   path,
@@ -20,21 +27,22 @@ function MoviesCardList({
   updateSavedMoviesCardList,
 }) {
   const windowWidth = SizeScreen();
-  const [numberCardsLoaded, setNumberCardsLoaded] = useState(3);
-  const [numberCardsDisplayed, setNumberCardsDisplayed] = useState(12);
+  const [numberCardsLoaded, setNumberCardsLoaded] = useState(CARDS_LOADED_BIG);
+  const [numberCardsDisplayed, setNumberCardsDisplayed] =
+    useState(CARDS_DISPLAYED_BIG);
 
   useEffect(() => {
     if (windowWidth.width < 1280 && windowWidth.width > 769) {
-      setNumberCardsDisplayed(12);
-      setNumberCardsLoaded(3);
+      setNumberCardsDisplayed(CARDS_DISPLAYED_BIG);
+      setNumberCardsLoaded(CARDS_LOADED_BIG);
     }
     if (windowWidth.width <= 769 && windowWidth.width > 480) {
-      setNumberCardsDisplayed(8);
-      setNumberCardsLoaded(2);
+      setNumberCardsDisplayed(CARDS_DISPLAYED_MIDDLE);
+      setNumberCardsLoaded(CARDS_LOADED_SMALL);
     }
     if (windowWidth.width <= 480) {
-      setNumberCardsDisplayed(5);
-      setNumberCardsLoaded(2);
+      setNumberCardsDisplayed(CARDS_DISPLAYED_SMALL);
+      setNumberCardsLoaded(CARDS_LOADED_SMALL);
     }
   }, [windowWidth]);
 
@@ -87,9 +95,7 @@ function MoviesCardList({
 
   return (
     <div className="movies-list">
-      {isShowNotFound && (
-        <p className="movies-list_error">{NotFoundMessage}</p>
-      )}
+      {isShowNotFound && <p className="movies-list_error">{NotFoundMessage}</p>}
       {isShowRequestErrorMessage && (
         <p className="movies-list_error">{ErrorRequest}</p>
       )}
