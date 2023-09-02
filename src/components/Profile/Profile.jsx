@@ -9,51 +9,44 @@ import {
   ErrorName,
   ErrorEmail,
 } from "../../utils/constants";
+import Validation from "../../utils/Validation";
 
 function Profile({ editCurrentUser, handleLogout }) {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [nameValid, setNameValid] = useState([]);
-  const [emailValid, setEmailValid] = useState([]);
-  const [formValid, setFormValid] = useState(false);
-  const [formErrors, setFormErrors] = useState({ name: "", email: "" });
   const [isEditing, setIsEditing] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const currentUser = useContext(CurrentUserContext);
 
+  const {
+    values,
+    errors,
+    isValid,
+    setValues,
+    handleChange,
+    setIsValid,
+    resetForm,
+  } = Validation();
+
   useEffect(() => {
     if (currentUser) {
-      setName(currentUser.name);
-      setEmail(currentUser.email);
+      setValues(currentUser);
+      setIsValid(true);
     }
-  }, [currentUser]);
+  }, [currentUser, setValues, setIsValid]);
 
   const handleSubmit = (event) => {
     event.preventDefault();
     setIsLoading(true);
-    editCurrentUser(email, name);
+    editCurrentUser(values.email, values.name);
     setIsLoading(false);
     setIsEditing(false);
   };
 
-  const handleChange = (event) => {
-    const { name, value } = event.target;
-    validateField(name, value);
-    if (name === "name") {
-      setName(value);
-    } else if (name === "email") {
-      setEmail(value);
-    }
-  };
-
   const validateField = (fieldName, value) => {
-    let nameValidState = nameValid;
-    let emailValidState = emailValid;
-    const fieldValidationErrors = formErrors;
+    const fieldValidationErrors = errors;
 
     switch (fieldName) {
       case "name":
-        nameValidState = value.match(NameReg);
+        const nameValidState = value.match(NameReg);
         if (nameValidState !== null) {
           fieldValidationErrors.name =
             nameValidState[0].length === value.length ? "" : ErrorName;
@@ -64,7 +57,7 @@ function Profile({ editCurrentUser, handleLogout }) {
         }
         break;
       case "email":
-        emailValidState = value.match(EmailReg);
+        const emailValidState = value.match(EmailReg);
         if (emailValidState !== null) {
           fieldValidationErrors.email =
             emailValidState[0].length === value.length ? "" : ErrorEmail;
@@ -78,21 +71,18 @@ function Profile({ editCurrentUser, handleLogout }) {
         break;
     }
 
-    setNameValid(nameValidState);
-    setEmailValid(emailValidState);
-    setFormErrors(fieldValidationErrors);
-    validateForm();
+    setValues({ ...values, [fieldName]: value });
+    setIsValid(errors.name === "" && errors.email === "");
   };
 
   const validateForm = () => {
     if (
       currentUser &&
-      name === currentUser.name &&
-      email === currentUser.email
+      (values.name !== currentUser.name || values.email !== currentUser.email)
     ) {
-      setFormValid(false);
+      setIsValid(errors.name === "" && errors.email === "");
     } else {
-      setFormValid(formErrors.name === "" && formErrors.email === "");
+      setIsValid(false);
     }
   };
 
@@ -105,7 +95,7 @@ function Profile({ editCurrentUser, handleLogout }) {
       <Header path="/profile" isLoggedIn={false} />
       <div className="profile__containers">
         <h1 className="profile__title">
-          Привет, {currentUser && currentUser.name ? currentUser.name : name}!
+          Привет, {values.name}!
         </h1>
         <form className="profile__form" onSubmit={handleSubmit}>
           <fieldset className="profile__fieldset">
@@ -116,13 +106,14 @@ function Profile({ editCurrentUser, handleLogout }) {
                 required
                 type="text"
                 name="name"
-                value={name}
+                value={values.name || ''}
                 onChange={handleChange}
+                onBlur={(e) => validateField(e.target.name, e.target.value)}
                 placeholder="Имя"
                 disabled={!isEditing || isLoading}
               />
             </div>
-            <span className="profile__error">{formErrors.name}</span>
+            <span className="profile__error">{errors.name}</span>
             <div className="profile__info">
               <label className="profile__email">E-mail</label>
               <input
@@ -130,24 +121,25 @@ function Profile({ editCurrentUser, handleLogout }) {
                 required
                 name="email"
                 type="email"
-                value={email}
+                value={values.email || ''}
                 onChange={handleChange}
+                onBlur={(e) => validateField(e.target.name, e.target.value)}
                 placeholder="Email"
                 disabled={!isEditing || isLoading}
               />
             </div>
-            <span className="profile__error">{formErrors.email}</span>
+            <span className="profile__error">{errors.email}</span>
           </fieldset>
           <div className="profile__container">
             {isEditing ? (
               <button
                 type="submit"
                 className={`profile__button_edit ${
-                  !formValid || isLoading
+                  !isValid || isLoading
                     ? "profile__button_inactive"
                     : "profile__button_active"
                 } profile__edit`}
-                disabled={!formValid || isLoading}
+                disabled={!isValid || isLoading}
               >
                 {isLoading ? "Сохранение..." : "Сохранить"}
               </button>

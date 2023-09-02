@@ -11,6 +11,9 @@ import {
   CARDS_DISPLAYED_SMALL,
   CARDS_DISPLAYED_MIDDLE,
   CARDS_DISPLAYED_BIG,
+  SCREEN_SIZE_SMALL,
+  SCREEN_SIZE_MIDDLE,
+  SCREEN_SIZE_BIG
 } from "../../../utils/constants";
 
 function MoviesCardList({
@@ -32,15 +35,15 @@ function MoviesCardList({
     useState(CARDS_DISPLAYED_BIG);
 
   useEffect(() => {
-    if (windowWidth.width < 1280 && windowWidth.width > 769) {
+    if (windowWidth.width < SCREEN_SIZE_BIG && windowWidth.width > SCREEN_SIZE_MIDDLE) {
       setNumberCardsDisplayed(CARDS_DISPLAYED_BIG);
       setNumberCardsLoaded(CARDS_LOADED_BIG);
     }
-    if (windowWidth.width <= 769 && windowWidth.width > 480) {
+    if (windowWidth.width <= SCREEN_SIZE_MIDDLE && windowWidth.width > SCREEN_SIZE_SMALL) {
       setNumberCardsDisplayed(CARDS_DISPLAYED_MIDDLE);
       setNumberCardsLoaded(CARDS_LOADED_SMALL);
     }
-    if (windowWidth.width <= 480) {
+    if (windowWidth.width <= SCREEN_SIZE_SMALL) {
       setNumberCardsDisplayed(CARDS_DISPLAYED_SMALL);
       setNumberCardsLoaded(CARDS_LOADED_SMALL);
     }
@@ -54,7 +57,7 @@ function MoviesCardList({
 
   let isMoreCards =
     numberCardsDisplayed < movies.length &&
-    numberCardsDisplayed >= 3 &&
+    numberCardsDisplayed >= CARDS_LOADED_BIG &&
     isShowCardList;
   let moviesList;
 

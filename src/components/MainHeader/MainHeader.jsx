@@ -4,6 +4,7 @@ import "./MainHeader.css";
 import headerLogo from "../../images/logo.svg";
 import headerAvatar from "../../images/avatar.svg";
 import SizeScreen from "../SizeScreen/SizeScreen";
+import { SCREEN_SIZE_MIDDLE } from "../../utils/constants";
 
 function MainHeader({ path }) {
   const isHomePage = path === "/";
@@ -22,7 +23,7 @@ function MainHeader({ path }) {
 
   const screenWidth = SizeScreen();
 
-  const isDesctop = screenWidth.width > 769;
+  const isDesctop = screenWidth.width > SCREEN_SIZE_MIDDLE;
 
   return (
     <>
