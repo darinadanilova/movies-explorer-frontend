@@ -9,44 +9,58 @@ import {
   ErrorName,
   ErrorEmail,
 } from "../../utils/constants";
-import Validation from "../../utils/Validation";
 
 function Profile({ editCurrentUser, handleLogout }) {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [nameValid, setNameValid] = useState([]);
+  const [emailValid, setEmailValid] = useState([]);
+  const [formValid, setFormValid] = useState(false);
+  const [formErrors, setFormErrors] = useState({ name: "", email: "" });
   const [isEditing, setIsEditing] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const currentUser = useContext(CurrentUserContext);
-
-  const {
-    values,
-    errors,
-    isValid,
-    setValues,
-    handleChange,
-    setIsValid,
-    resetForm,
-  } = Validation();
+  const [isFormChanged, setIsFormChanged] = useState(false);
+  const [initialName, setInitialName] = useState("");
+  const [initialEmail, setInitialEmail] = useState("");
 
   useEffect(() => {
-    if (currentUser) {
-      setValues(currentUser);
-      setIsValid(true);
+    if (currentUser && currentUser.name && currentUser.email) {
+      setName(currentUser.name);
+      setEmail(currentUser.email);
+      setInitialName(currentUser.name);
+      setInitialEmail(currentUser.email);
     }
-  }, [currentUser, setValues, setIsValid]);
+  }, [currentUser]);
 
   const handleSubmit = (event) => {
     event.preventDefault();
     setIsLoading(true);
-    editCurrentUser(values.email, values.name);
+    editCurrentUser(email, name);
     setIsLoading(false);
     setIsEditing(false);
+    setIsFormChanged(false);
+  };
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    validateField(name, value);
+    if (name === "name") {
+      setName(value);
+    } else if (name === "email") {
+      setEmail(value);
+    }
+    setIsFormChanged(true);
   };
 
   const validateField = (fieldName, value) => {
-    const fieldValidationErrors = errors;
+    let nameValidState = nameValid;
+    let emailValidState = emailValid;
+    const fieldValidationErrors = formErrors;
 
     switch (fieldName) {
       case "name":
-        const nameValidState = value.match(NameReg);
+        nameValidState = value.match(NameReg);
         if (nameValidState !== null) {
           fieldValidationErrors.name =
             nameValidState[0].length === value.length ? "" : ErrorName;
@@ -57,7 +71,7 @@ function Profile({ editCurrentUser, handleLogout }) {
         }
         break;
       case "email":
-        const emailValidState = value.match(EmailReg);
+        emailValidState = value.match(EmailReg);
         if (emailValidState !== null) {
           fieldValidationErrors.email =
             emailValidState[0].length === value.length ? "" : ErrorEmail;
@@ -71,18 +85,22 @@ function Profile({ editCurrentUser, handleLogout }) {
         break;
     }
 
-    setValues({ ...values, [fieldName]: value });
-    setIsValid(errors.name === "" && errors.email === "");
+    setNameValid(nameValidState);
+    setEmailValid(emailValidState);
+    setFormErrors(fieldValidationErrors);
+    validateForm();
   };
 
   const validateForm = () => {
-    if (
-      currentUser &&
-      (values.name !== currentUser.name || values.email !== currentUser.email)
-    ) {
-      setIsValid(errors.name === "" && errors.email === "");
+    if (name === initialName && email === initialEmail) {
+      setFormValid(false);
     } else {
-      setIsValid(false);
+      setFormValid(
+        formErrors.name === "" &&
+          formErrors.email === "" &&
+          nameValid.every((isValid) => isValid) &&
+          emailValid.every((isValid) => isValid)
+      );
     }
   };
 
@@ -95,7 +113,7 @@ function Profile({ editCurrentUser, handleLogout }) {
       <Header path="/profile" isLoggedIn={false} />
       <div className="profile__containers">
         <h1 className="profile__title">
-          Привет, {values.name}!
+          Привет, {currentUser && currentUser.name ? currentUser.name : name}!
         </h1>
         <form className="profile__form" onSubmit={handleSubmit}>
           <fieldset className="profile__fieldset">
@@ -106,14 +124,13 @@ function Profile({ editCurrentUser, handleLogout }) {
                 required
                 type="text"
                 name="name"
-                value={values.name || ''}
+                value={name}
                 onChange={handleChange}
-                onBlur={(e) => validateField(e.target.name, e.target.value)}
                 placeholder="Имя"
                 disabled={!isEditing || isLoading}
               />
             </div>
-            <span className="profile__error">{errors.name}</span>
+            <span className="profile__error">{formErrors.name}</span>
             <div className="profile__info">
               <label className="profile__email">E-mail</label>
               <input
@@ -121,25 +138,32 @@ function Profile({ editCurrentUser, handleLogout }) {
                 required
                 name="email"
                 type="email"
-                value={values.email || ''}
+                value={email}
                 onChange={handleChange}
-                onBlur={(e) => validateField(e.target.name, e.target.value)}
                 placeholder="Email"
                 disabled={!isEditing || isLoading}
               />
             </div>
-            <span className="profile__error">{errors.email}</span>
+            <span className="profile__error">{formErrors.email}</span>
           </fieldset>
           <div className="profile__container">
             {isEditing ? (
               <button
                 type="submit"
                 className={`profile__button_edit ${
-                  !isValid || isLoading
+                  !formValid ||
+                  isLoading ||
+                  !isFormChanged ||
+                  (name === initialName && email === initialEmail)
                     ? "profile__button_inactive"
                     : "profile__button_active"
                 } profile__edit`}
-                disabled={!isValid || isLoading}
+                disabled={
+                  !formValid ||
+                  isLoading ||
+                  !isFormChanged ||
+                  (name === initialName && email === initialEmail)
+                }
               >
                 {isLoading ? "Сохранение..." : "Сохранить"}
               </button>
