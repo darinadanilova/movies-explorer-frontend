@@ -47,6 +47,21 @@ function MoviesCardList({
       setNumberCardsDisplayed(CARDS_DISPLAYED_SMALL);
       setNumberCardsLoaded(CARDS_LOADED_SMALL);
     }
+  }, [movies]);
+
+  useEffect(() => {
+    if (windowWidth.width < SCREEN_SIZE_BIG && windowWidth.width > SCREEN_SIZE_MIDDLE) {
+      setNumberCardsDisplayed(CARDS_DISPLAYED_BIG);
+      setNumberCardsLoaded(CARDS_LOADED_BIG);
+    }
+    if (windowWidth.width <= SCREEN_SIZE_MIDDLE && windowWidth.width > SCREEN_SIZE_SMALL) {
+      setNumberCardsDisplayed(CARDS_DISPLAYED_MIDDLE);
+      setNumberCardsLoaded(CARDS_LOADED_SMALL);
+    }
+    if (windowWidth.width <= SCREEN_SIZE_SMALL) {
+      setNumberCardsDisplayed(CARDS_DISPLAYED_SMALL);
+      setNumberCardsLoaded(CARDS_LOADED_SMALL);
+    }
   }, [windowWidth]);
 
   useEffect(() => {
