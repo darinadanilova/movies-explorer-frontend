@@ -28,7 +28,6 @@ function SearchForm({ onSearch, searchText, onSearchByDuration }) {
   const handleCheckboxChange = () => {
     setCheckboxStatus(!checkboxStatus);
     onSearchByDuration(!checkboxStatus);
-    localStorage.setItem("CheckboxStatus", !checkboxStatus);
   };
 
   return (
