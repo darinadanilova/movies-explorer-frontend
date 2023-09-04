@@ -1,16 +1,18 @@
 import React, { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 import "./SearchForm.css";
 
 function SearchForm({ onSearch, searchText, onSearchByDuration }) {
   const [checkboxStatus, setCheckboxStatus] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
-    if (localStorage.getItem("CheckboxStatus") === "true") {
+    if (location.pathname === "/movies" && localStorage.getItem("CheckboxStatus") === "true") {
       setCheckboxStatus(true);
     } else {
       setCheckboxStatus(false);
     }
-  }, []);
+  }, [location]);
 
   const [textWarning, setTextWarning] = useState("");
 
@@ -28,6 +30,7 @@ function SearchForm({ onSearch, searchText, onSearchByDuration }) {
   const handleCheckboxChange = () => {
     setCheckboxStatus(!checkboxStatus);
     onSearchByDuration(!checkboxStatus);
+    localStorage.setItem("CheckboxStatus", !checkboxStatus);
   };
 
   return (
@@ -36,6 +39,7 @@ function SearchForm({ onSearch, searchText, onSearchByDuration }) {
         <input
           className="search__input"
           required
+          name="search"
           type="text"
           placeholder="Фильм"
           defaultValue={searchText}
@@ -43,18 +47,36 @@ function SearchForm({ onSearch, searchText, onSearchByDuration }) {
         <span className="search__error">{textWarning}</span>
         <button className="search__button" type="submit" />
       </form>
-      <div className="filter">
-        <label className="filter__checkbox">
-          <input
-            className="filter__input"
-            required
-            type="checkbox"
-            checked={checkboxStatus}
-            onChange={handleCheckboxChange}
-          />
-          Короткометражки
-        </label>
-      </div>
+      {location.pathname === "/movies" && (
+        <div className="filter">
+          <label className="filter__checkbox">
+            <input
+              className="filter__input"
+              required
+              name="checkbox"
+              type="checkbox"
+              checked={checkboxStatus}
+              onChange={handleCheckboxChange}
+            />
+            Короткометражки
+          </label>
+        </div>
+      )}
+      {location.pathname === "/saved-movies" && (
+        <div className="filter">
+          <label className="filter__checkbox">
+            <input
+              className="filter__input"
+              required
+              name="checkbox"
+              type="checkbox"
+              checked={checkboxStatus}
+              onChange={handleCheckboxChange}
+            />
+            Короткометражки
+          </label>
+        </div>
+      )}
     </div>
   );
 }
