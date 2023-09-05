@@ -13,7 +13,6 @@ const CARDS_DISPLAYED_MIDDLE = 8;
 const CARDS_DISPLAYED_BIG = 12;
 const SCREEN_SIZE_SMALL = 620;
 const SCREEN_SIZE_MIDDLE = 820;
-const SCREEN_SIZE_BIG = 5000;
 const CyrillicReg = /^[\u0400-\u04FF]+$/;
 const NameReg = /([А-ЯЁа-яёa-z-\s]+)/gi;
 const EmailReg = /^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i;
@@ -68,6 +67,5 @@ module.exports = {
   CARDS_DISPLAYED_MIDDLE,
   CARDS_DISPLAYED_BIG,
   SCREEN_SIZE_SMALL,
-  SCREEN_SIZE_MIDDLE,
-  SCREEN_SIZE_BIG
+  SCREEN_SIZE_MIDDLE
 };
