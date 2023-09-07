@@ -24,11 +24,11 @@ import {
 } from "../../utils/constants";
 import FilterCheckboxDuration from "..//Movies/FilterCheckbox/FilterCheckboxDuration";
 import FilterCheckboxLang from "../Movies/FilterCheckbox/FilterCheckboxLang";
-import { Route, Routes, useNavigate } from "react-router-dom";
+import { Route, Routes, useNavigate, useLocation } from "react-router-dom";
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
-  const [currentUser, setCurrentUser] = useState({});
+  const [currentUser, setCurrentUser] = useState();
   const [isSaved, setIsSaved] = useState(false);
   const [isMoviesLoaded, setIsMoviesLoaded] = useState(false);
   const [isLoad, setIsLoad] = useState(false);
@@ -56,6 +56,7 @@ function App() {
     useState(false);
   const [isShowErrorMessage, setIsShowErrorMessage] = useState(false);
   const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
     getCurrentUser();
@@ -84,6 +85,16 @@ function App() {
       setIsLoad(false);
     }
   }, [isLoad]);
+
+  useEffect(() => {
+    if (
+      loggedIn &&
+      (window.location.pathname === "/signin" ||
+        window.location.pathname === "/signup")
+    ) {
+      navigate("/movies");
+    }
+  }, [loggedIn, navigate]);
 
   useEffect(() => {
     localStorage.setItem("SavedMovies", JSON.stringify(savedMovies));
@@ -120,10 +131,12 @@ function App() {
       if (jwt) {
         MainApi.getInfo(jwt)
           .then((res) => {
-            setCurrentUser(res.user);
+            setCurrentUser(res.data);
             setLoggedIn(true);
             getSaveFilms();
-            navigate("/movies");
+            navigate(`${location.pathname}${location.search}`, {
+              replace: true,
+            });
           })
           .catch((err) => {
             handleError(err);
@@ -135,7 +148,7 @@ function App() {
   const patchInfoUser = (email, name) => {
     MainApi.patchInfo(name, email)
       .then((res) => {
-        setCurrentUser(res.user);
+        setCurrentUser(res.data);
         openTooltip(SuccesMessage);
       })
       .catch((err) => {
@@ -365,7 +378,6 @@ function App() {
         break;
       case 401 || 403:
         openTooltip(ErrorAuth);
-        handleSignout();
         break;
       case 404:
         openTooltip(ErrorNotFound);
@@ -377,7 +389,6 @@ function App() {
         openTooltip(
           `${ErrorDefault} ${err.status !== undefined ? err.status : ""}`
         );
-        handleSignout();
         break;
     }
   };
@@ -463,7 +474,7 @@ function App() {
                 />
               }
             />
-            <Route path="/*" element={<NotFound />}></Route>
+            <Route path="*" element={<NotFound />}></Route>
           </Routes>
 
           <InfoTooltip

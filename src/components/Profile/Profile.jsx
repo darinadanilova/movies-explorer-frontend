@@ -18,19 +18,28 @@ function Profile({ editCurrentUser, handleLogout }) {
   const [formValid, setFormValid] = useState(false);
   const [formErrors, setFormErrors] = useState({ name: "", email: "" });
   const [isEditing, setIsEditing] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const currentUser = useContext(CurrentUserContext);
+  const [isFormChanged, setIsFormChanged] = useState(false);
+  const [initialName, setInitialName] = useState("");
+  const [initialEmail, setInitialEmail] = useState("");
 
   useEffect(() => {
-    if (currentUser) {
+    if (currentUser && currentUser.name && currentUser.email) {
       setName(currentUser.name);
       setEmail(currentUser.email);
+      setInitialName(currentUser.name);
+      setInitialEmail(currentUser.email);
     }
   }, [currentUser]);
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    setIsLoading(true);
     editCurrentUser(email, name);
+    setIsLoading(false);
     setIsEditing(false);
+    setIsFormChanged(false);
   };
 
   const handleChange = (event) => {
@@ -41,6 +50,7 @@ function Profile({ editCurrentUser, handleLogout }) {
     } else if (name === "email") {
       setEmail(value);
     }
+    setIsFormChanged(true);
   };
 
   const validateField = (fieldName, value) => {
@@ -82,14 +92,15 @@ function Profile({ editCurrentUser, handleLogout }) {
   };
 
   const validateForm = () => {
-    if (
-      currentUser &&
-      name === currentUser.name &&
-      email === currentUser.email
-    ) {
+    if (name === initialName && email === initialEmail) {
       setFormValid(false);
     } else {
-      setFormValid(formErrors.name === "" && formErrors.email === "");
+      setFormValid(
+        formErrors.name === "" &&
+          formErrors.email === "" &&
+          nameValid.every((isValid) => isValid) &&
+          emailValid.every((isValid) => isValid)
+      );
     }
   };
 
@@ -116,7 +127,7 @@ function Profile({ editCurrentUser, handleLogout }) {
                 value={name}
                 onChange={handleChange}
                 placeholder="Имя"
-                disabled={!isEditing}
+                disabled={!isEditing || isLoading}
               />
             </div>
             <span className="profile__error">{formErrors.name}</span>
@@ -130,7 +141,7 @@ function Profile({ editCurrentUser, handleLogout }) {
                 value={email}
                 onChange={handleChange}
                 placeholder="Email"
-                disabled={!isEditing}
+                disabled={!isEditing || isLoading}
               />
             </div>
             <span className="profile__error">{formErrors.email}</span>
@@ -140,13 +151,21 @@ function Profile({ editCurrentUser, handleLogout }) {
               <button
                 type="submit"
                 className={`profile__button_edit ${
-                  !formValid
+                  !formValid ||
+                  isLoading ||
+                  !isFormChanged ||
+                  (name === initialName && email === initialEmail)
                     ? "profile__button_inactive"
                     : "profile__button_active"
                 } profile__edit`}
-                disabled={!formValid}
+                disabled={
+                  !formValid ||
+                  isLoading ||
+                  !isFormChanged ||
+                  (name === initialName && email === initialEmail)
+                }
               >
-                Сохранить
+                {isLoading ? "Сохранение..." : "Сохранить"}
               </button>
             ) : (
               <button
@@ -159,7 +178,7 @@ function Profile({ editCurrentUser, handleLogout }) {
             )}
             {!isEditing && (
               <Link
-                to={"/signin"}
+                to={"/"}
                 className="profile__edit profile__logout"
                 onClick={signOut}
               >
